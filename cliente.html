@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Painel de Tráfego - Juliana Torres | Meta Ads">
-<title>Painel de Tráfego · Juliana</title>
+<title>Relatório de Tráfego · Juliana</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
@@ -283,6 +283,21 @@ textarea{width:100%;border:1px solid var(--line-2);background:var(--surface);col
   .wrap{padding:0}
 }
 </style>
+
+<style id="clientonly">
+#view-dashboard{display:none!important}
+.tabs{display:none!important}
+#btnExport,#btnImport{display:none!important}
+#view-cliente{display:block!important}
+</style>
+<script id="forceclient">
+window.addEventListener("DOMContentLoaded",function(){
+  try{
+    document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected', t.dataset.view==='cliente'?'true':'false'));
+  }catch(e){}
+});
+</script>
+
 </head>
 <body>
 <div class="topbar">
