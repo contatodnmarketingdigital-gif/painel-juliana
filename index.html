@@ -232,7 +232,7 @@ textarea{width:100%;border:1px solid var(--line-2);background:var(--surface);col
 .chero .kick{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#bdf0e9;font-weight:600}
 .chero h1{color:#fff;font-size:clamp(28px,5vw,46px);margin:12px 0 6px;font-weight:800}
 .chero .period{color:#cdf3ee;font-size:14px}
-.cbig{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:26px}
+.cbig{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
 .cbig .b{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:18px 20px}
 .cbig .b .l{font-size:12.5px;color:#c8f2ec;text-transform:uppercase;letter-spacing:.05em;font-weight:600}
 .cbig .b .v{font-family:var(--disp);font-weight:800;font-size:clamp(26px,4vw,38px);margin-top:6px;line-height:1}
@@ -393,8 +393,9 @@ textarea{width:100%;border:1px solid var(--line-2);background:var(--surface);col
         <h1 id="c-title">Juliana Torres</h1>
         <div class="period" id="c-period"></div>
         <div class="cbig">
-          <div class="b"><div class="l">Investimos em tráfego</div><div class="v" id="c-invest"></div></div>
-          <div class="b"><div class="l">E geramos em vendas</div><div class="v" id="c-fat"></div></div>
+          <div class="b"><div class="l">Investimento em tráfego</div><div class="v" id="c-invest"></div></div>
+          <div class="b"><div class="l">Faturamento geral</div><div class="v" id="c-fat"></div></div>
+          <div class="b"><div class="l">Retorno bruto</div><div class="v" id="c-retorno"></div></div>
         </div>
       </div>
 
@@ -736,12 +737,12 @@ function renderClient(){
   $("#c-period").textContent="Período: "+fmtDate(S.meta.ini)+" a "+fmtDate(S.meta.fim);
   $("#c-invest").textContent=brl(t.invest);
   $("#c-fat").textContent=brl(t.fat);
+  $("#c-retorno").textContent=brl(t.fat-t.invest);
   const stats=[
     {l:"Vendas",v:int(t.vendas),s:"no período"},
     {l:"Custo por venda",v:brl(cpa),s:"CPA"},
     {l:"ROAS",v:x2(roas)+"×",s:"retorno s/ investido"},
-    {l:"ROI",v:(roi>=0?"+":"")+pct(roi),s:"sobre o investimento"},
-    {l:"Retorno bruto",v:brl(t.fat-t.invest),s:"faturamento menos o tráfego"}
+    {l:"ROI",v:(roi>=0?"+":"")+pct(roi),s:"sobre o investimento"}
   ];
   const m=n(S.meta.margem);
   if(m>0){const liq=t.fat*m/100;stats.push({l:"Lucro líquido",v:brl(liq-t.invest),s:"margem "+m+"%"});}
