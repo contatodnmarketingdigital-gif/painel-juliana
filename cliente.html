@@ -748,7 +748,8 @@ function renderClient(){
     {l:"Vendas",v:int(t.vendas),s:"no período"},
     {l:"Custo por venda",v:brl(cpa),s:"CPA"},
     {l:"ROAS",v:x2(roas)+"×",s:"retorno s/ investido"},
-    {l:"ROI",v:(roi>=0?"+":"")+pct(roi),s:"sobre o investimento"}
+    {l:"ROI",v:(roi>=0?"+":"")+pct(roi),s:"sobre o investimento"},
+    {l:"Retorno bruto",v:brl(t.fat-t.invest),s:"faturamento menos o tráfego"}
   ];
   const m=n(S.meta.margem);
   if(m>0){const liq=t.fat*m/100;stats.push({l:"Lucro líquido",v:brl(liq-t.invest),s:"margem "+m+"%"});}
