@@ -290,14 +290,7 @@ textarea{width:100%;border:1px solid var(--line-2);background:var(--surface);col
 #btnExport,#btnImport{display:none!important}
 #view-cliente{display:block!important}
 </style>
-<script id="forceclient">
-window.addEventListener("DOMContentLoaded",function(){
-  try{
-    document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected', t.dataset.view==='cliente'?'true':'false'));
-  }catch(e){}
-});
-</script>
-
+<script id="forceclient">window.addEventListener("DOMContentLoaded",function(){try{document.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.view==="cliente"?"true":"false"));}catch(e){}});</script>
 </head>
 <body>
 <div class="topbar">
@@ -497,13 +490,13 @@ function renderKPIs(){
     {label:"Vendas",val:int(t.vendas),sub:"CPA "+brl(cpa),cls:""},
     {label:"ROAS",val:x2(roas)+"×",sub:"Retorno sobre investimento",cls:roas>=(n(S.meta.be)||1)?"pos":"neg"},
     {label:"ROI",val:(roi>=0?"+":"")+pct(roi),sub:"Sobre o valor investido",cls:roi>=0?"pos":"neg"},
-    {label:"Retorno bruto",val:brl(retorno),sub:"Faturamento − investimento",cls:retorno>=0?"pos":"neg"},
+    {label:"Retorno bruto",val:brl(retorno),sub:"Faturamento menos o tráfego (ainda sem as taxas da plataforma)",cls:retorno>=0?"pos":"neg"},
     {label:"CPA médio",val:brl(cpa),sub:"Custo por venda",cls:""},
     {label:"CTR médio",val:pct(ctr),sub:"CPC "+brl(t.cliques?t.invest/t.cliques:0),cls:""}
   ];
   if(fatLiq!==null){
     cards.splice(2,0,{label:"Faturamento líquido",val:brl(fatLiq),sub:"Margem "+margem+"%",cls:""});
-    cards.push({label:"Lucro líquido",val:brl(lucroLiq),sub:"Líquido − investimento",cls:lucroLiq>=0?"pos":"neg"});
+    cards.push({label:"Lucro líquido",val:brl(lucroLiq),sub:"Faturamento líquido menos o tráfego",cls:lucroLiq>=0?"pos":"neg"});
   }
   cards.push({label:"Conversão clique→venda",val:pct(convClk),sub:int(t.cliques)+" cliques"});
   $("#kpigrid").innerHTML=cards.map(c=>`
